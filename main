@@ -1,0 +1,31 @@
+from word2number import w2n
+from num2words import num2words
+import timeit
+
+# This is to estimate the time taken by the code
+start = timeit.default_timer()
+
+# As alphabetically eight will be the first word in sorted numbers. So the output should start with 8. Also for a shorter range I checked that the ending of the output number is always 5. As the range is large I had to optimize the time taken. For that tried 2-3 methods. The time optimization is given by th below code where I only check numbbers that are starting with 8 and ending with 5.
+
+list=[]
+for i in range(1,8):
+    num=10**i
+    for j in range(8*num+5,9*num,10):
+        # converting the number to word
+        x=num2words(j)
+        list.append(x)
+
+# This is sorting of the array list of numbers
+sorted = sorted(list)
+
+# Selecting the first number from the sorted list and converting that word to number
+result=w2n.word_to_num(sorted[0])
+
+#This is timer stop
+stop = timeit.default_timer()
+print('Time: ', stop - start)
+
+# output
+# 808085
+# eight hundred and eight thousand and eighty-five
+# Time:  591.7078378
